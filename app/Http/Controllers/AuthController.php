@@ -52,7 +52,6 @@ class AuthController extends Controller
             'email'=>$validation['email'],
             'saldo'=>'0',
             'akses'=>'user',
-            'image_user'=>'image',
             'password'=>$hashedPassword,
         ]);
 
@@ -117,6 +116,24 @@ class AuthController extends Controller
         return response([
             'message' => 'Berhasil Topup Saldo',
             'user' => auth()->user()
+        ], 200);
+    }
+
+    public function updateuserimg(Request $request)
+    {
+
+
+
+        $image_user = $this->saveImage($request->image_user, 'profiles');
+
+       
+
+        auth()->user()->update([
+            'image_user' => "$image_user"
+        ]);
+
+        return response([
+            'message' => 'Berhasil Update Image'
         ], 200);
     }
 
