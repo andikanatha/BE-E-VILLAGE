@@ -12,9 +12,10 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_transaksi',
-        'catatan',
-        'total_transaksi',
+        'trx_name',
+        'status',
+        'total_trx',
+        'description',
         'id_user'
     ];
     public function user()

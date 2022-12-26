@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meeting;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MeetingController extends Controller
@@ -12,12 +13,10 @@ class MeetingController extends Controller
             //validate fields
             $attrs = $request->validate([
                 'deskripsi' => 'required|string',
-                'image' => 'required|string'
             ]);
     
             $rembugdata = Meeting::create([
                 'deskripsi' => $attrs['deskripsi'],
-                'image' => $attrs['image'],
                 'id_user' => auth()->user()->id
             ]);
     
@@ -25,6 +24,7 @@ class MeetingController extends Controller
             return response([
                 'message' => 'Berhasil Upload.',
                 'data' => $rembugdata,
+                'users' => $rembugdata->id_user
             ], 200);
         }
 
@@ -56,7 +56,7 @@ class MeetingController extends Controller
         public function getallrembug()
         {
             return response([
-                'workexps' => Meeting::orderBy('created_at', 'desc')->with('user:id,name')->get()
+                'rembug' => Meeting::orderBy('created_at', 'desc')->with('users:id,name,image_user')->get(),
             ], 200);
         }
     
@@ -67,4 +67,6 @@ class MeetingController extends Controller
                 'workexpsuser' => Meeting::where('id_user', $id_user)->get()
             ], 200);
         }
+
+        
 }

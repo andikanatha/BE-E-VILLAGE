@@ -41,6 +41,7 @@ class AuthController extends Controller
     public function register (Request $request){
         $validation =$request->validate([
             'name'=>'required|string',
+            'username'=>'required|string|unique:users,username',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6',
         ]);
@@ -48,6 +49,7 @@ class AuthController extends Controller
         $hashedPassword = Hash::make($validation['password']);
 
         $user = User::Create([
+            'username'=>$validation['username'],
             'name'=>$validation['name'],
             'email'=>$validation['email'],
             'saldo'=>'0',
@@ -66,12 +68,14 @@ class AuthController extends Controller
         $validation =$request->validate([
             'name'=>'required|string',
             'email'=>'required|email|unique:users,email',
+            'username'=>'required|string|unique:users,username',
             'password'=>'required|min:6',
         ]);
 
         $hashedPassword = Hash::make($validation['password']);
 
         $user = User::Create([
+            'username'=>$validation['username'],
             'name'=>$validation['name'],
             'email'=>$validation['email'],
             'saldo'=>'0',
@@ -106,11 +110,13 @@ class AuthController extends Controller
     public function topupSaldo(Request $request)
     {
         $validation = $request->validate([
-            'saldo' => 'string'
+            'saldo' => 'required'
         ]);
 
+        $saldo = auth()->user()->saldo+$validation['saldo'];
+
         auth()->user()->update([
-            'saldo' => $validation['saldo'],
+            'saldo' => $saldo,
         ]);
 
         return response([

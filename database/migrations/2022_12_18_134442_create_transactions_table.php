@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user');
-            $table->string('nama_transaksi');
-            $table->string('catatan')->nullable();
-            $table->integer('total_transaksi')->nullable();
+            $table->string('trx_name');
+            $table->string('status');
+            $table->integer('total_trx');
+            $table->string('description');
             $table->timestamps();
         });
     }
