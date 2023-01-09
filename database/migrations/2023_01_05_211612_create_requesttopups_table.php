@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meetings', function (Blueprint $table) {
+        Schema::create('requesttopups', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->string('deskripsi')->nullable();
-            $table->dateTime('created_date')->nullable();
-            $table->string('image')->nullable();
             $table->timestamps();
+            $table->string('description');
+            $table->string('status');
+            $table->integer('id_user');
+            $table->integer('nominal');
+            $table->string('seconduser');
+            $table->dateTime('topup_date');
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meetings');
+        Schema::dropIfExists('requesttopups');
     }
 };

@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ReportVillageHead extends Model
+class commentrembug extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'tempat_kejadian',
-        'deskripsi',
-        'image',
-        'tempat_kejadian',
         'id_user',
-        'created_date'
+        'comment',
+        'commentdate',
+        'id_post'
     ];
+
 
     public function users()
     {

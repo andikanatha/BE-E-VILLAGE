@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meetings', function (Blueprint $table) {
+        Schema::create('datetrxes', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->string('deskripsi')->nullable();
-            $table->dateTime('created_date')->nullable();
-            $table->string('image')->nullable();
             $table->timestamps();
+            $table->dateTime('trx_date')->nullable();
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meetings');
+        Schema::dropIfExists('datetrxes');
     }
 };

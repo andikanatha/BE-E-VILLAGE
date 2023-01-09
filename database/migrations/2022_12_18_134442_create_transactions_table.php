@@ -17,9 +17,13 @@ return new class extends Migration
             $table->id();
             $table->integer('id_user');
             $table->string('trx_name');
+            $table->string('seconduser');
+            $table->dateTime('trx_date');
+            $table->dateTime('datefor')->nullable();
             $table->string('status');
             $table->integer('total_trx');
             $table->string('description');
+            $table->string('jenis');
             $table->timestamps();
         });
     }

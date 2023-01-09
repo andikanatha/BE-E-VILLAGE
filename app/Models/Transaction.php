@@ -16,10 +16,14 @@ class Transaction extends Model
         'status',
         'total_trx',
         'description',
-        'id_user'
+        'id_user',
+        'trx_date',
+        'seconduser',
+        'jenis',
+        'datefor'
     ];
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
 }

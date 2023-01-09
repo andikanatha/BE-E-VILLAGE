@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ReportVillageHead extends Model
+class LaporanPengeluaran extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'tempat_kejadian',
-        'deskripsi',
-        'image',
-        'tempat_kejadian',
+        'nominal',
+        'date',
         'id_user',
-        'created_date'
+        'description',
+        'keperluan'
     ];
+
 
     public function users()
     {

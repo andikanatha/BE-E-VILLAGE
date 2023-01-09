@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('tempat_kejadian')->nullable();
+            $table->dateTime('created_date')->nullable();
         });
     }
 
