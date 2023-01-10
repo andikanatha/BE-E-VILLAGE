@@ -66,6 +66,10 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/user/transaksi/sampah', [TransactionController::class, 'getsampah']);
     Route::get('/user/transaksi/pdam', [TransactionController::class, 'getpdam']);
     Route::get('/user/transaksi/detail/{id}', [TransactionController::class, 'getdetailtrx']);
+    Route::get('/user/transaksi/{query}', [TransactionController::class, 'searchpemabayaran']);
+    Route::get('/user/pemasukan/{query}', [TransactionController::class, 'searchpemasukan']);
+    Route::get('/user/pemasukan/sampah/{query}', [TransactionController::class, 'searchpemasukansampah']);
+    Route::get('/user/pemasukan/pdam/{query}', [TransactionController::class, 'searchpemasukanpdam']);
 
 
     //Rembug
