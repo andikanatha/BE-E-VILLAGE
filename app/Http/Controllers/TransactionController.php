@@ -248,6 +248,16 @@ class TransactionController extends Controller
             'DataTransaksi' => Transaction::where('trx_date', 'LIKE', "%{$query}%" )->where('seconduser', auth()->user()->id)->orderby('trx_date', 'DESC')->get()
         ], 200);
     }
+    public function searchpemasukansampah ($query){
+        return response([
+            'DataTransaksi' => Transaction::where('trx_date', 'LIKE', "%{$query}%" )->where('seconduser', auth()->user()->id)->orderby('trx_date', 'DESC')->get()
+        ], 200);
+    }
+    public function searchpemasukanpdam ($query){
+        return response([
+            'DataTransaksi' => Transaction::where('trx_date', 'LIKE', "%{$query}%" )->where('seconduser', auth()->user()->id)->orderby('trx_date', 'DESC')->get()
+        ], 200);
+    }
     public function gettransaksiall (){
         return response([
             'DataTransaksi' => Transaction::where('id_user', auth()->user()->id)->orderby('trx_date', 'DESC')->orWhere('seconduser', auth()->user()->id)->get()
